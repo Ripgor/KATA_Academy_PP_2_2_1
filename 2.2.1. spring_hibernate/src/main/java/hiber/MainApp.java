@@ -39,7 +39,7 @@ public class MainApp {
       userService.add(u2);
       userService.add(u3);
 
-      List<User> users = userService.listUsers();
+      List<User> users = userService.getUsers();
       for (User user : users) {
          System.out.println("Id = "+user.getId());
          System.out.println("First Name = "+user.getFirstName());
@@ -50,7 +50,7 @@ public class MainApp {
       }
 
       try {
-         User ownerCar = userService.owner("Nissan", 15);
+         User ownerCar = userService.getUserByCar("Nissan", 15);
          System.out.println(ownerCar);
       } catch (NoResultException e) {
          System.out.println("User not found");

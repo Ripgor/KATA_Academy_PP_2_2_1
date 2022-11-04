@@ -9,7 +9,7 @@ public interface UserDao {
    void add(User user);
 
    // Новый метод, который вытаскивает user'a по модели и серии его машины
-   User owner(String model, int series);
+   User getUserByCar(String model, int series);
 
-   List<User> listUsers();
+   List<User> getUsers();
 }

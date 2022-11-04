@@ -10,10 +10,8 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Repository
-@Transactional
 public class UserDaoImp implements UserDao {
 
-   //@Autowired
    private final SessionFactory sessionFactory;
 
    public UserDaoImp(SessionFactory sessionFactory) {
@@ -27,14 +25,14 @@ public class UserDaoImp implements UserDao {
 
    @Override
    @SuppressWarnings("unchecked")
-   public List<User> listUsers() {
+   public List<User> getUsers() {
       TypedQuery<User> query=sessionFactory.getCurrentSession().createQuery("from User");
       return query.getResultList();
    }
 
    @SuppressWarnings("unchecked")
    @Override
-   public User owner(String model, int series) {
+   public User getUserByCar(String model, int series) {
       // в переводе на русский :"Достань из таблицы users тех, у кого модель и серия машины совпадают с переданными параметрами"
       TypedQuery<User> query = sessionFactory.getCurrentSession()
               .createQuery("from User user where user.car.model = :model and user.car.series = :series");
